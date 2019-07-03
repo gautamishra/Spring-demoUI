@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Spring Security Demo</span>
+    <span class="example-spacer"></span>
+    <button mat-button>
+      <mat-icon class="example-icon" aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+    </button>
+    <button mat-button [matMenuTriggerFor]="SettingMenu">Setting
+      <mat-icon >arrow_drop_down</mat-icon>
+    </button>
+      <mat-menu #SettingMenu="matMenu" yPosition="below">
+        <button mat-menu-item [routerLink]="['/login']">Login</button>
+        <button mat-menu-item [routerLink]="['/register']">Register</button>
+      </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>

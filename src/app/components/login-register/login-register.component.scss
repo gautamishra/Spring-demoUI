@@ -1,0 +1,22 @@
+
+.container-form{
+    margin: auto;
+    margin-top: 4%;
+    width: 33%;
+    box-shadow: 1px 3px 15px #eee;
+    padding: 10px;
+    .title-text{
+        text-align: center;
+        font-size: 21px;
+        color: #624f4f
+    }
+    .example-form {
+        min-width: 150px;
+        max-width: 500px;
+        width: 100%;
+      }
+      
+      .example-full-width {
+        width: 100%;
+      }
+}

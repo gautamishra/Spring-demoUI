@@ -1,0 +1,61 @@
+<div class="container-form" *ngIf="!isLogin">
+  <span class="title-text" *ngIf="true">Register</span>
+  <form class="example-form" #form="ngForm" (ngSubmit)="form.form.valid && register(form)">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="First Name" value="" name="firstName"  ngModel #firstName="ngModel" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput  placeholder="Last Name" value="" name="lastName" ngModel #lastname="ngModel" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput type="password" placeholder="password" value="" name="password" ngModel #password="ngModel" required>
+    </mat-form-field>
+
+    
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Email" name="email" ngModel #email="ngModel" required email/>
+      <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+      <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="email.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput [matDatepicker]="myDatepicker" placeholder="Date Of Birth" name="dateOfBirth" ngModel #datofbirth="ngModel" required/>
+      <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+      <mat-datepicker #myDatepicker></mat-datepicker>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" class="btn btn-primary">Register</button>
+  </form>
+</div>
+
+
+
+<div class="container-form" *ngIf="!!isLogin">
+  <span class="title-text" ><h5>Login</h5></span>
+  <form class="example-form" #form="ngForm" (ngSubmit)="form.form.valid && login(form)">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Email" name="email" ngModel #email="ngModel" required email/>
+      <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+      <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="email.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width">
+      <input matInput type="password" placeholder="password" value="" name="password" ngModel #password="ngModel" required>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" class="btn btn-primary">Login</button>
+  </form>
+</div>
