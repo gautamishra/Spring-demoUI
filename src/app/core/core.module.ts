@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu.component';
 import { MaterialModule } from '../material/material.module';
 import {RouterModule} from '@angular/router';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpIntercepterService } from './http-intercepter.service';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,13 @@ import {RouterModule} from '@angular/router';
     FormsModule,
     RouterModule,
     MaterialModule,
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpIntercepterService,
+      multi:true
+    }
   ],
   exports: [
     CommonModule,
