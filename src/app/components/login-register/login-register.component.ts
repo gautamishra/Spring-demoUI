@@ -5,6 +5,7 @@ import { UserInfo, UserInfoDto } from 'src/app/modal/user.modal';
 import { RegistrationService } from 'src/app/services/registration.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { isLContainer } from '@angular/core/src/render3/util';
+import { NotificationsService } from 'angular2-notifications';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -34,8 +35,10 @@ export class LoginRegisterComponent implements OnInit {
   isLogin = true;
 
   constructor(private registerationService: RegistrationService,
-    private route: ActivatedRoute) {
-    route.data.subscribe((data) => {
+    private activatedRoute: ActivatedRoute ,
+    private router: Router,
+    private notifficationService: NotificationsService) {
+      activatedRoute.data.subscribe((data) => {
       this.isLogin = data.login;
     });
   }
@@ -65,7 +68,10 @@ export class LoginRegisterComponent implements OnInit {
     this.userInfo.password = controls.password.value;
     this.registerationService.loginUser(this.userInfo.email, this.userInfo.password)
       .subscribe((data) => {
-        console.log(data);
+       this.router.navigate(['./../home'], {
+         relativeTo: this.activatedRoute
+       });
       });
   }
+
 }
