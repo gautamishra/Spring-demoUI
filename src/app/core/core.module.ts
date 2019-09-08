@@ -6,6 +6,7 @@ import { MaterialModule } from '../material/material.module';
 import {RouterModule} from '@angular/router';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpIntercepterService } from './http-intercepter.service';
+import { NotificationsService } from 'angular2-notifications';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,9 @@ import { HttpIntercepterService } from './http-intercepter.service';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpIntercepterService,
+      deps: [
+        NotificationsService
+      ],
       multi:true
     }
   ],
