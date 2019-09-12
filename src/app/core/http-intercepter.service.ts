@@ -32,6 +32,8 @@ export class HttpIntercepterService implements HttpInterceptor {
     error = JSON.parse(error);
     if (error.status === 500) {
       this.notificationService.error('Error', error.message , {timeout: 1000} );
+    } else if (error.status === 401) {
+      this.notificationService.error('Error', 'Not Authorized', {timeout: 1000});
     }
   }
 }
